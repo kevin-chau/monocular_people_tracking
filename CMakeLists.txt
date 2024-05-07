@@ -12,6 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   tfpose_ros
 )
 
+find_package(OpenCV 4 REQUIRED)
+
 ########################
 ## message generation ##
 ########################
@@ -56,5 +58,6 @@ add_executable(monocular_people_tracking_node
 )
 target_link_libraries(monocular_people_tracking_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBRARIES}
 )
 add_dependencies(monocular_people_tracking_node monocular_people_tracking_gencpp)
