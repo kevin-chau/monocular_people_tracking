@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 <launch>
 	<arg name="sim" default="false"/>
-	<arg name="camera_image_width" default="1920"/>
-	<arg name="camera_image_height" default="1080"/>
+	<arg name="camera_image_width" default="1280"/>
+	<arg name="camera_image_height" default="720"/>
 
 	<node pkg="usb_cam" type="usb_cam_node" name="top_front_camera" unless="$(arg sim)">
+		<param name="video_device" value="/dev/video4" />
 		<param name="camera_name" value="top_front_camera"/>
 		<param name="camera_frame_id" value="top_front_camera_optical_frame"/>
 		<param name="image_width" value="$(arg camera_image_width)"/>
 		<param name="image_height" value="$(arg camera_image_height)"/>
+		<param name="pixel_format" value="yuyv"/>
 	</node>
 
 	<group ns="top_front_camera">
